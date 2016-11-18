@@ -1,0 +1,3 @@
+this is a test for using buffered file reader
+hope it works ok
+if not I'll try again later

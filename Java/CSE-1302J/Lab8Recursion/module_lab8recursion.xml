@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_lab8recursion" default="compile.module.lab8recursion">
+  <dirname property="module.lab8recursion.basedir" file="${ant.file.module_lab8recursion}"/>
+  
+  <property name="module.jdk.home.lab8recursion" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.lab8recursion" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.lab8recursion" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.lab8recursion" value="-encoding UTF-8 -source 8 ${compiler.args}"/>
+  
+  <property name="lab8recursion.output.dir" value="${module.lab8recursion.basedir}/out/production/Lab8Recursion"/>
+  <property name="lab8recursion.testoutput.dir" value="${module.lab8recursion.basedir}/out/test/Lab8Recursion"/>
+  
+  <path id="lab8recursion.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="lab8recursion.module.production.classpath">
+    <path refid="${module.jdk.classpath.lab8recursion}"/>
+  </path>
+  
+  <path id="lab8recursion.runtime.production.module.classpath">
+    <pathelement location="${lab8recursion.output.dir}"/>
+  </path>
+  
+  <path id="lab8recursion.module.classpath">
+    <path refid="${module.jdk.classpath.lab8recursion}"/>
+    <pathelement location="${lab8recursion.output.dir}"/>
+  </path>
+  
+  <path id="lab8recursion.runtime.module.classpath">
+    <pathelement location="${lab8recursion.testoutput.dir}"/>
+    <pathelement location="${lab8recursion.output.dir}"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.lab8recursion">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.lab8recursion">
+    <patternset refid="excluded.from.module.lab8recursion"/>
+  </patternset>
+  
+  <path id="lab8recursion.module.sourcepath">
+    <dirset dir="${module.lab8recursion.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.lab8recursion" depends="compile.module.lab8recursion.production,compile.module.lab8recursion.tests" description="Compile module Lab8Recursion"/>
+  
+  <target name="compile.module.lab8recursion.production" depends="register.custom.compilers" description="Compile module Lab8Recursion; production classes">
+    <mkdir dir="${lab8recursion.output.dir}"/>
+    <javac2 destdir="${lab8recursion.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.lab8recursion}/javac">
+      <compilerarg line="${compiler.args.lab8recursion}"/>
+      <bootclasspath refid="lab8recursion.module.bootclasspath"/>
+      <classpath refid="lab8recursion.module.production.classpath"/>
+      <src refid="lab8recursion.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.lab8recursion"/>
+    </javac2>
+    
+    <copy todir="${lab8recursion.output.dir}">
+      <fileset dir="${module.lab8recursion.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.lab8recursion.tests" depends="register.custom.compilers,compile.module.lab8recursion.production" description="compile module Lab8Recursion; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.lab8recursion" description="cleanup module">
+    <delete dir="${lab8recursion.output.dir}"/>
+    <delete dir="${lab8recursion.testoutput.dir}"/>
+  </target>
+</project>

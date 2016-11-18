@@ -1,0 +1,11 @@
+Damp 60 12/4/09
+Balmy 70 05/15/08
+Rainy 65 04/21/07
+Pleasant 75 06/17/10
+Stormy 50 02/01/10
+Sunny 78 03/29/10
+Rainy 68 04/15/10
+Miserable 35 01/20/09
+Clear 78 09/16/10
+Sunny 95 08/19/10
+Foggy 50 11/20/09

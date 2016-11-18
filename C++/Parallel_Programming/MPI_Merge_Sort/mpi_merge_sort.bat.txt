@@ -1,0 +1,23 @@
+#!/bin/bash
+#-----------------------------------------------------------------
+# Example SLURM job script to run serial applications on TACC's
+# Stampede system.
+#
+# This script requests one core (out of 16) on one node. The job
+# will have access to all the memory in the node.  Note that this
+# job will be charged as if all 16 cores were requested.
+#-----------------------------------------------------------------
+
+#SBATCH -J mpi_merge_sort.c         	 # Job name
+#SBATCH -o MPIMergeSort.%j.out    	 			 # Specify stdout output file (%j expands to jobId)
+#SBATCH -e mpi_merge_sort.e			   	 # Name of stderr output file(%j expands to jobId)
+#SBATCH -p development        	 			 # Queue name
+#SBATCH -N 16                      				 # Total number of nodes requested
+#SBATCH -n 128                    				 # Total number of tasks
+#SBATCH -t 00:30:00						         # Run time (hh:mm:ss) - 0.5 hours
+#SBATCH -A TG-ASC140030                # <-- Allocation name to charge job against
+
+mpicc -Wall mpi_merge_sort.c -o MPI_MergeSort
+# Launch the executable named "a.out"
+
+./MPI_MergeSort	16

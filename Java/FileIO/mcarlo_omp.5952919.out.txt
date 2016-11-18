@@ -1,0 +1,54 @@
+
+Darts: 6400000
+Threads: 16
+Hits: 5026414 
+Pi: 3.141509
+Time: 0.060000 
+
+Darts: 64000000
+Threads: 16
+Hits: 50270543 
+Pi: 3.141909
+Time: 0.339000 
+
+Darts: 640000000
+Threads: 16
+Hits: 502665551 
+Pi: 3.141660
+Time: 3.261000 
+
+Darts: 6400000
+Threads: 32
+Hits: 5026249 
+Pi: 3.141406
+Time: 0.078000 
+
+Darts: 64000000
+Threads: 32
+Hits: 50261487 
+Pi: 3.141343
+Time: 0.346000 
+
+Darts: 640000000
+Threads: 32
+Hits: 502647595 
+Pi: 3.141547
+Time: 3.248000 
+
+Darts: 6400000
+Threads: 64
+Hits: 5028487 
+Pi: 3.142804
+Time: 0.064000 
+
+Darts: 64000000
+Threads: 64
+Hits: 50269802 
+Pi: 3.141863
+Time: 0.360000 
+
+Darts: 640000000
+Threads: 64
+Hits: 502660772 
+Pi: 3.141630
+Time: 3.264000 

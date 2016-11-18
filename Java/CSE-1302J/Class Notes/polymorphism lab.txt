@@ -1,0 +1,272 @@
+package polymorphicsorting;
+
+// Program Name:      Numbers.java
+// Course:            CSE 1302J
+// Student Name:      James Ryan Williams
+// Assignment Number: Project# or Lab#
+// Due Date:          dd/mm/2013
+// Purpose:           Program purpose / description         
+
+                   
+import java.util.Scanner;
+
+
+public class Numbers
+{
+    // --------------------------------------------
+    //  Reads in an array of integers, sorts them,
+    //  then prints them in sorted order.
+    // --------------------------------------------
+    public static void main (String[] args)
+    {
+        Integer [] intList;
+        int size;
+ 
+        Scanner scan = new Scanner(System.in);
+ 
+        System.out.print ("\nHow many integers do you want to sort? ");
+        size = scan.nextInt();
+        intList = new Integer[size];
+ 
+        System.out.println ("\nEnter the numbers...");
+        for (int i = 0; i < size; i++)
+            intList[i] = scan.nextInt();
+ 
+        Sorting.selectionSort(intList);
+ 
+        System.out.println ("\nYour numbers in sorted order...");
+        for (int i = 0; i < size; i++)
+            System.out.print(intList[i] + "  ");
+        System.out.println ();
+    }
+}
+
+
+package polymorphicsortingstrings;
+
+// Program Name:      Strings.java
+
+import java.util.Scanner;
+
+// Course:            CSE 1302J
+// Student Name:      James Ryan Williams
+// Assignment Number: Project# or Lab#
+// Due Date:          dd/mm/2013
+// Purpose:           Program purpose / description
+
+public class Strings 
+{
+    public static void main(String[] args) 
+    {
+        String [] stringList;
+        int size;
+ 
+        Scanner scan = new Scanner(System.in);
+ 
+        System.out.print ("\nHow many strings do you want to sort? ");
+        size = scan.nextInt();
+        stringList = new String[size];
+ 
+        System.out.println ("\nEnter the strings...");
+        for (int i = 0; i < size; i++)
+            stringList[i] = scan.next();
+ 
+        Sorting.insertionSort(stringList);
+ 
+        System.out.println ("\nYour strings in sorted order...");
+        for (int i = 0; i < size; i++)
+            System.out.print(stringList[i] + "  ");
+        System.out.println ();
+    }
+}
+
+
+package weeklysales;
+
+// Program Name:      Sorting.java
+// Course:            CSE 1302J
+// Student Name:      James Ryan Williams
+// Assignment Number: Project# or Lab#
+// Due Date:          dd/mm/2013
+// Purpose:           Program purpose / description         
+
+                   
+public class Sorting
+{
+   //-----------------------------------------------------------------
+   //  Sorts the specified array of objects using the selection
+   //  sort algorithm.
+   //-----------------------------------------------------------------
+   public static void selectionSort (Comparable [] list)
+   {
+      int min;
+      Comparable temp;
+ 
+      for (int index = 0; index < list.length-1; index++)
+      {
+         min = index;
+         for (int scan = index+1; scan < list.length; scan++)
+            if (list[scan].compareTo(list[min]) < 0)
+               min = scan;
+ 
+         // Swap the values
+         temp = list[min];
+         list[min] = list[index];
+         list[index] = temp;
+      }
+   }
+ 
+   //-----------------------------------------------------------------
+   //  Sorts the specified array of objects using the insertion
+   //  sort algorithm.
+   //-----------------------------------------------------------------
+   public static void insertionSort (Comparable[] list)
+   {
+      for (int index = 1; index < list.length; index++)
+      {
+         Comparable key = list[index];
+         int position = index;
+ 
+         //  Shift larger values to the right
+         while (position > 0 && key.compareTo(list[position-1]) < 0)
+         {
+            list[position] = list[position-1];
+            position--;
+         }
+           
+         list[position] = key;
+      }
+   }
+}
+
+
+package weeklysales;
+
+// Program Name:      Salesperson.java
+// Course:            CSE 1302J
+// Student Name:      James Ryan Williams
+// Assignment Number: Project# or Lab#
+// Due Date:          dd/mm/2013
+// Purpose:           Program purpose / description         
+
+                   
+public class Salesperson implements Comparable
+{
+    private String firstName, lastName;
+    private int totalSales;
+ 
+    //------------------------------------------------------
+    //  Constructor:  Sets up the sales person object with
+    //                the given data.
+    //------------------------------------------------------
+    public Salesperson (String first, String last, int sales)
+    {
+        firstName = first;
+        lastName = last;
+        totalSales = sales;
+    }
+ 
+    //-------------------------------------------
+    //  Returns the sales person as a string.
+    //-------------------------------------------
+    public String toString()
+    {
+        return lastName + ", " + firstName + ": \t" + totalSales;
+    }
+ 
+ 
+    //-------------------------------------------
+    //  Returns true if the sales people have
+    //  the same name.
+    //-------------------------------------------
+    public boolean equals (Object other)
+    {
+        return (lastName.equals(((Salesperson)other).getLastName()) &&
+                firstName.equals(((Salesperson)other).getFirstName()));
+    }
+ 
+    //--------------------------------------------------
+    //  Order is based on total sales with the name
+    //  (last, then first) breaking a tie.
+    //--------------------------------------------------
+    public int compareTo(Object o)
+    {
+        if(!(o instanceof Salesperson))
+        return -1;
+        Salesperson other = (Salesperson)o;
+        int result = this.totalSales-other.totalSales;
+        if(result != 0)
+            return -result;
+        result = this.lastName.compareTo(other.lastName);
+        if(result != 0)
+            return result; 
+        result = this.firstName.compareTo(other.firstName);
+        if(result != 0)
+            return result;
+        return other.firstName.compareTo(this.firstName);
+    }
+ 
+    //-------------------------
+    //  First name accessor.
+    //-------------------------
+    public String getFirstName()
+    {
+        return firstName;
+    }
+   
+    //-------------------------
+    //  Last name accessor.
+    //-------------------------
+    public String getLastName()
+    {
+        return lastName;
+    }
+ 
+    //-------------------------
+    //  Total sales accessor.
+    //-------------------------
+    public int getSales()
+    {
+        return totalSales;
+    }
+}
+
+
+package weeklysales;
+
+// Program Name:      WeeklySales.java
+// Course:            CSE 1302J
+// Student Name:      James Ryan Williams
+// Assignment Number: Project# or Lab#
+// Due Date:          dd/mm/2013
+// Purpose:           Program purpose / description
+
+public class WeeklySales
+{
+    public static void main(String[] args)
+    {
+        Salesperson[] salesStaff = new Salesperson[10];
+ 
+        salesStaff[0] = new Salesperson("Jane", "Jones", 3000);
+        salesStaff[1] = new Salesperson("Daffy", "Duck", 4935);
+        salesStaff[2] = new Salesperson("James", "Jones", 3000);       
+        salesStaff[3] = new Salesperson("Dick", "Walter", 2800);       
+        salesStaff[4] = new Salesperson("Don", "Trump", 1570);  
+        salesStaff[5] = new Salesperson("Jane", "Black", 3000);
+        salesStaff[6] = new Salesperson("Harry", "Taylor", 7300);      
+        salesStaff[7] = new Salesperson("Andy", "Adams", 5000);
+        salesStaff[8] = new Salesperson("Jim", "Doe", 2850);   
+        salesStaff[9] = new Salesperson("Walt", "Smith", 3000);
+ 
+        Sorting.insertionSort(salesStaff);
+        
+ 
+        System.out.println ("\nRanking of Sales for the Week\n");
+ 
+        for (Salesperson s : salesStaff)
+            
+            System.out.println (s);
+            
+    }
+}
+N

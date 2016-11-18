@@ -1,0 +1,107 @@
+run:
+
+-----------------------------------------
+0: Quit 
+1: Iterative Fibonacci sequence
+2: Recursive Fibonacci sequence
+3: Print Fibonacci sequence for n=40
+-----------------------------------------
+
+1
+Enter a number for the iterative
+fibonnacci sequence: 
+40
+
+-----------------------------------------
+Start time: 1384367485467
+Calculated total for 40: 102334155
+End time: 1384367485469
+Total Time: 2ms
+Used memory in bytes: 363096
+Used memory in megabytes: 0
+
+-----------------------------------------
+
+-----------------------------------------
+0: Quit 
+1: Iterative Fibonacci sequence
+2: Recursive Fibonacci sequence
+3: Print Fibonacci sequence for n=40
+-----------------------------------------
+
+2
+Enter a number for the recursive
+fibonnacci sequence: 
+40
+
+-----------------------------------------
+Start time: 1384367489243
+Calculated total for 40: 102334155
+End time: 1384367489887
+Total Time: 644ms
+Used memory in bytes: 364160
+Used memory in megabytes: 0
+
+-----------------------------------------
+
+-----------------------------------------
+0: Quit 
+1: Iterative Fibonacci sequence
+2: Recursive Fibonacci sequence
+3: Print Fibonacci sequence for n=40
+-----------------------------------------
+
+3
+-----------------------------------------
+0: 0
+1: 1
+2: 1
+3: 2
+4: 3
+5: 5
+6: 8
+7: 13
+8: 21
+9: 34
+10: 55
+11: 89
+12: 144
+13: 233
+14: 377
+15: 610
+16: 987
+17: 1597
+18: 2584
+19: 4181
+20: 6765
+21: 10946
+22: 17711
+23: 28657
+24: 46368
+25: 75025
+26: 121393
+27: 196418
+28: 317811
+29: 514229
+30: 832040
+31: 1346269
+32: 2178309
+33: 3524578
+34: 5702887
+35: 9227465
+36: 14930352
+37: 24157817
+38: 39088169
+39: 63245986
+40: 102334155
+-----------------------------------------
+
+-----------------------------------------
+0: Quit 
+1: Iterative Fibonacci sequence
+2: Recursive Fibonacci sequence
+3: Print Fibonacci sequence for n=40
+-----------------------------------------
+
+0
+BUILD SUCCESSFUL (total time: 19 seconds)

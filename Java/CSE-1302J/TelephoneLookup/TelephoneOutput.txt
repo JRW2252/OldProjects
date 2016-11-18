@@ -1,0 +1,85 @@
+-----------------------------------------
+0: Quit 
+1: Print original list
+2: Print alphabetically sorted list
+3: Print numerically sorted list
+4: Search using a name for a phone number
+	Name format: 'Last First'
+5: Search using a phone number for a name
+	Number format: ### ###-####
+-----------------------------------------
+
+4
+Type name using 'Last First' format
+wetzel janet
+-------------------------------------------------
+Information for wetzel janet was found.
+963: Wetzel          Janet           678 814-5324   
+-------------------------------------------------
+
+
+-----------------------------------------
+0: Quit 
+1: Print original list
+2: Print alphabetically sorted list
+3: Print numerically sorted list
+4: Search using a name for a phone number
+	Name format: 'Last First'
+5: Search using a phone number for a name
+	Number format: ### ###-####
+-----------------------------------------
+
+5
+Type phone number using ### ###-#### format
+770 899-5716
+-------------------------------------------------
+Information for 770 899-5716 was found.
+970: Little          Eve             770 899-5716   
+-------------------------------------------------
+
+
+-----------------------------------------
+0: Quit 
+1: Print original list
+2: Print alphabetically sorted list
+3: Print numerically sorted list
+4: Search using a name for a phone number
+	Name format: 'Last First'
+5: Search using a phone number for a name
+	Number format: ### ###-####
+-----------------------------------------
+
+4
+Type name using 'Last First' format
+ryan williams
+No Results Found for ryan williams
+
+-----------------------------------------
+0: Quit 
+1: Print original list
+2: Print alphabetically sorted list
+3: Print numerically sorted list
+4: Search using a name for a phone number
+	Name format: 'Last First'
+5: Search using a phone number for a name
+	Number format: ### ###-####
+-----------------------------------------
+
+5
+Type phone number using ### ###-#### format
+619 929-5743
+No Results Found for 619 929-5743
+
+-----------------------------------------
+0: Quit 
+1: Print original list
+2: Print alphabetically sorted list
+3: Print numerically sorted list
+4: Search using a name for a phone number
+	Name format: 'Last First'
+5: Search using a phone number for a name
+	Number format: ### ###-####
+-----------------------------------------
+
+0
+BUILD SUCCESSFUL (total time: 4 minutes 0 seconds)

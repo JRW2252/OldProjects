@@ -1,0 +1,73 @@
+CONDITION, TEMPERATURE, DATE
+Damp, 60, 12/4/09
+Balmy, 70, 05/15/08
+Rainy, 65, 04/21/07
+Pleasant, 75, 06/17/10
+Stormy, 50, 02/01/10
+Sunny, 78, 03/29/10
+Rainy, 68, 04/15/10
+Miserable, 35, 01/20/09
+Clear, 78, 09/16/10
+Sunny, 95, 08/19/10
+Foggy, 50, 11/20/09
+
+
+Average Temperature: 65
+
+
+Sorted Tempurature List: 
+
+CONDITION, TEMPERATURE, DATE
+null
+Sunny, 95, 08/19/10
+Sunny, 78, 03/29/10
+Clear, 78, 09/16/10
+Pleasant, 75, 06/17/10
+Balmy, 70, 05/15/08
+Rainy, 68, 04/15/10
+Rainy, 65, 04/21/07
+Damp, 60, 12/4/09
+Foggy, 50, 11/20/09
+Stormy, 50, 02/01/10
+Miserable, 35, 01/20/09
+
+
+Sorted Condition List: 
+
+CONDITION, TEMPERATURE, DATE
+Balmy, 70, 05/15/08
+Clear, 78, 09/16/10
+Damp, 60, 12/4/09
+Foggy, 50, 11/20/09
+Miserable, 35, 01/20/09
+Pleasant, 75, 06/17/10
+Rainy, 68, 04/15/10
+Rainy, 65, 04/21/07
+Stormy, 50, 02/01/10
+Sunny, 78, 03/29/10
+Sunny, 95, 08/19/10
+
+
+Find 'Foggy' Condition
+
+CONDITION, TEMPERATURE, DATE
+Foggy, 50, 11/20/09
+
+Foggy day's temp difference from the average is 15 degrees.
+
+Enter a condition that you would like to find: 
+dark
+search did not find that condition. Try again. 
+
+sunny
+search did not find that condition. Try again. 
+
+Your searched condition sunny was found. 
+
+Enter a temperature that you want to find: 
+68
+search did not find that temperature. Try again. 
+
+Your searched temperature 68 was found. 
+
+BUILD SUCCESSFUL (total time: 11 seconds)

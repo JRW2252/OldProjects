@@ -1,0 +1,107 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1404\cocoasubrtf130
+{\fonttbl\f0\fnil\fcharset0 Monaco;}
+{\colortbl;\red255\green255\blue255;\red53\green53\blue53;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{hyphen\}}{\leveltext\leveltemplateid1\'01\uc0\u8259 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid1}
+{\list\listtemplateid2\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{hyphen\}}{\leveltext\leveltemplateid101\'01\uc0\u8259 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid2}
+{\list\listtemplateid3\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{hyphen\}}{\leveltext\leveltemplateid201\'01\uc0\u8259 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid3}
+{\list\listtemplateid4\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{hyphen\}}{\leveltext\leveltemplateid301\'01\uc0\u8259 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid4}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}{\listoverride\listid2\listoverridecount0\ls2}{\listoverride\listid3\listoverridecount0\ls3}{\listoverride\listid4\listoverridecount0\ls4}}
+{\info
+{\author James Ryan Williams}}\margl1440\margr1440\vieww15200\viewh13680\viewkind0
+\deftab560
+\pard\pardeftab560\partightenfactor0
+
+\f0\fs34 \cf2 Parallel HW 8\
+\pard\pardeftab560\slleading20\partightenfactor0
+
+\fs24 \cf2 \
+\pard\pardeftab560\sa40\partightenfactor0
+
+\fs28 \cf2 5.4\
+\pard\pardeftab560\slleading20\partightenfactor0
+
+\fs24 \cf2 \
+We can devise a couple of serial algorithms for back substitution. The \'93row- oriented\'94 version is \
+// row-oriented\
+for (row = n-1; row >= 0; row ) \{ \
+	x[row] = b[row];\uc0\u8232 	for (col = row+1; col < n; col++) \
+		x[row] -= A[row][col]*[col]; \
+	x[row] /= A[row][row]; \
+\} \
+\pard\pardeftab560\slleading20\pardirnatural\partightenfactor0
+\cf2 \
+\pard\pardeftab560\slleading20\partightenfactor0
+\cf2 Here the \'93right-hand side\'94 of the system is stored in array b, the two- dimensional array of coefficients is stored in array A, and the solutions are stored in array x. An alternative is the following \'93column-oriented\'94 algorithm: \
+\pard\pardeftab560\slleading20\pardirnatural\partightenfactor0
+\cf2 \
+// column-oriented\
+// RHS -> b\
+// nxn -> A\
+// sol -> x\
+\pard\pardeftab560\slleading20\partightenfactor0
+\cf2 for (row = 0; row < n; row++) \
+	x[row] = b[row]; \
+\
+for (col = n-1; col >= 0; col ) \{ \
+	x[col] /= A[col][col];\uc0\u8232 	for (row = 0; row < col; row++) \
+		x[row] -= A[row][col] * x[col]; \
+\} \
+\pard\pardeftab560\slleading20\pardirnatural\partightenfactor0
+\cf2 \
+\pard\pardeftab560\slleading20\partightenfactor0
+\cf2 a. Determine whether the outer loop of the row-oriented algorithm can be parallelized.\
+\pard\pardeftab560\pardirnatural\partightenfactor0
+\ls1\ilvl0\cf2 {\listtext	\uc0\u8259 	}I don\'92t see how this can be parallelized, because the inner loop is reliant on the \'93row\'94 counter variable and the \'93x\'94 array. If this this were parallelized, then the inner loops \'93x[row]\'94 values could/would be modified by another threads concurrent operation. The inner loop is reliant on the outer loops operations.  \
+\pard\pardeftab560\slleading20\partightenfactor0
+\cf2 \
+b. Determine whether the inner loop of the row-oriented algorithm can be parallelized. \
+\pard\pardeftab560\pardirnatural\partightenfactor0
+\ls2\ilvl0\cf2 {\listtext	\uc0\u8259 	}  Yes, this can be parallelized, because both of the \'93x\'94 values which are being operated on and the \'93row\'94 iteration/counter variable will not be altered by another threads concurrent action/operation.  \uc0\u8232 \
+\pard\pardeftab560\slleading20\partightenfactor0
+\cf2 c. Determine whether the (second) outer loop of the column-oriented algorithm can be parallelized. \
+\pard\pardeftab560\pardirnatural\partightenfactor0
+\ls3\ilvl0\cf2 {\listtext	\uc0\u8259 	}I don\'92t see how the outer loop can be parallelized, because the inner and outer loops are both trying to utilize the same array \'93x\'94 with the \'93col\'94 array iterator. The inner loop is dependent on the outer loops iterator value for calculating the respective x[row] values.\
+\pard\pardeftab560\slleading20\partightenfactor0
+\cf2 \
+d. Determine whether the inner loop of the column-oriented algorithm can be parallelized. \
+\pard\pardeftab560\pardirnatural\partightenfactor0
+\ls4\ilvl0\cf2 {\listtext	\uc0\u8259 	}Yes, this can be parallelized, because the outer rows iterator \'93col\'94 will be the same for each inner loop operation. The loop dependence is not an issue with this portion of the code.\uc0\u8232 \
+\pard\pardeftab560\slleading20\partightenfactor0
+\cf2 e. Write one OpenMP program for each of the loops that you determined could be parallelized. You may find the single directive useful\'97when a block of code is being executed in parallel and a sub-block should be executed by only one thread, the sub-block can be modified by a #pragma omp single directive. The threads in the executing team will block at the end of the directive until all of the threads have completed it. \
+	\
+	// column-oriented\
+	int i, j;\
+\
+    #pragma omp parallel\
+    for (i = 0; i < r; i++) \{\
+        p[i] = b[i];\
+    \}\
+\
+    for (j = r-1; j >= 0; j--) \{\
+        p[j] /= pp[j][j];\
+        #pragma omp parallel\
+        for (i = 0; i < j; i++) \{\
+            p[i] -= pp[i][j] * p[j];\
+        \}\
+    \}\
+	\
+	// row-oriented\
+	int i, j;\
+    for (i = r-1; i >= 0; i--) \{\
+        p[i] = b[i];\
+\
+        #pragma omp parallel\
+        for (j = r+1; j < r; j++)\{\
+            p[i] -= pp[i][j]*p[j];\
+        \}\
+        p[i] /= pp[i][i];\
+    \}\uc0\u8232 \
+f. Modify your parallel loop with a schedule(runtime) clause and test the program with various schedules. If your upper triangular system has 10,000 variables, which schedule gives the best performance? \uc0\u8232 \
+\pard\pardeftab560\sa40\partightenfactor0
+
+\fs28 \cf2 5.5\
+\pard\pardeftab560\slleading20\partightenfactor0
+
+\fs24 \cf2 \
+Use OpenMP to implement a program that does Gaussian elimination.(See the preceding problem.) \
+You can assume that the input system doesn\'92t need any row-swapping. \uc0\u8232 - See the attached source code files for program. }

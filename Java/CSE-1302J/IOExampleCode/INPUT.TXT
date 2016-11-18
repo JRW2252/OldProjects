@@ -1,0 +1,2 @@
+hello world this is a simple input output
+test for java

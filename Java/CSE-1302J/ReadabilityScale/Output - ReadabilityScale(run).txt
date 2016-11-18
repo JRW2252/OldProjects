@@ -1,0 +1,28 @@
+run:
+You chose to open the file: flesch1.txt
+Words: 758	Syllables: 1171		Sentences: 45	Legability Index: 59
+
+This legability index is translated to the education level of a High School Student
+
+
+BUILD SUCCESSFUL (total time: 15 seconds)
+
+
+run:
+You chose to open the file: flesch2.txt
+Words: 223	Syllables: 397		Sentences: 21	Legability Index: 45
+
+This legability index is translated to the education level of a College Student
+
+
+BUILD SUCCESSFUL (total time: 7 seconds)
+
+
+run:
+You chose to open the file: flesch3.txt
+Words: 136	Syllables: 193		Sentences: 14	Legability Index: 76
+
+This legability index is translated to the education level of a 7th Grader
+
+
+BUILD SUCCESSFUL (total time: 10 seconds)
